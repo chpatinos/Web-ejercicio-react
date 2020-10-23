@@ -1,20 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Formulario from "./components/form";
+import ReusableForm from "./components/ReusableForm";
 import "bootstrap/dist/css/bootstrap.css";
 
-const fields = [
-  { type: "text", name: "Nombre", placeholder: "Nombre" },
-  { type: "text", name: "Apellido", placeholder: "Apellido" },
-  { type: "email", name: "Correo", placeholder: "Correo" },
+const formBuilder = [
+  { type: "text", name: "Universidad", placeholder: "Universidad", value: "", validators: { required: true, minLength: 5, maxLength: 10 } },
+  { type: "text", name: "Facultad", placeholder: "Facultad", value: "", validators: { required: true, minLength: 5 } },
+  { type: "text", name: "Departamento", placeholder: "Departamento", value: "", validators: { required: true, minLength: 5 } },
 ];
 
-const initialValues = { Nombre: "", Apellido: "", Correo: "" };
-
-const validators = [
-  { name: "Nombre", required: true, minLength: 5, maxLength: 20 },
-  { name: "Apellido", required: true, minLength: 5, maxLength: 20 },
-  { name: "Correo", required: true, minLength: 5, maxLength: 20 },
-];;
-
-ReactDOM.render(<Formulario fields={fields} initialValues={initialValues} validators={validators} />, document.getElementById("root"));
+ReactDOM.render(<ReusableForm formBuilder={formBuilder} />, document.getElementById("root"));
